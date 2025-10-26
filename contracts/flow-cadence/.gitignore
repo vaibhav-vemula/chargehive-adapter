@@ -1,0 +1,14 @@
+# Flow private keys
+*.pkey
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+chargehive.pkey

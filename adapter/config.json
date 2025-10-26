@@ -1,0 +1,11 @@
+{
+  "comment": "ChargeHive Raspberry Pi Configuration for Flow Blockchain",
+  "network": "testnet",
+  "accessNode": "access.devnet.nodes.onflow.org:9000",
+  "platformPrivateKey": "YOUR_PLATFORM_PRIVATE_KEY_HERE",
+  "platformAddress": "0x7c1a6e4b7eb419c1",
+  "adapterId": "adapter-rpi-001",
+  "userAddress": "0x28cedbe601e68bfb",
+  "CHAdapterContract": "0x7c1a6e4b7eb419c1",
+  "CHTokenContract": "0x7c1a6e4b7eb419c1"
+}

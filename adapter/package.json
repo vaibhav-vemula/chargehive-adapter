@@ -1,0 +1,17 @@
+{
+  "name": "adapter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@onflow/fcl": "^1.12.2",
+    "@onflow/types": "^1.4.0",
+    "elliptic": "^6.5.4",
+    "express": "^4.21.2"
+  }
+}
