@@ -5,7 +5,7 @@ from datetime import datetime
 import uuid
 
 # Serial configuration
-COM_PORT = '/dev/rfcommO'
+COM_PORT = '/dev/rfcomm0'
 BAUD_RATE = 9600
 
 # Commands
@@ -77,7 +77,7 @@ def end_session():
         json.dump(data, f, indent=2)
 
     print(f"Session data saved to {filename}")
-    print(f"Total energy consumed: {energy_consumed} Wh ({energy_consumed/1000:.3f} kWh)")
+    print(f"Total energy consumed: {energy_consumed} Wh")
     print(f"Total readings: {len(energy_values)}")
 
     # Reset session state
@@ -113,7 +113,7 @@ try:
         if current > 0:
             value = response[106:110]
             energy = int.from_bytes(value, byteorder='big')
-            print(f"Energy: {energy} Wh ({energy/1000:.3f} kWh) ... {timestamp}")
+            print(f"Energy: {energy} Wh ... {timestamp}")
 
             # Start a new session if not already active
             if not session_active:
