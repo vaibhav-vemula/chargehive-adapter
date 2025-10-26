@@ -52,7 +52,10 @@ def end_session():
         return
 
     # Calculate total energy consumed during session
-    energy_consumed = current_energy - start_energy if start_energy > 0 else current_energy
+    if start_energy > 0 and current_energy >= start_energy:
+        energy_consumed = current_energy - start_energy
+    else:
+        energy_consumed = current_energy
 
     # Generate filename with session ID
     filename = f"session_{session_id}_complete.json"
