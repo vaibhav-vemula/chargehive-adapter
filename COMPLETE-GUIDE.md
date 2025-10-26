@@ -13,7 +13,7 @@
 9. [Troubleshooting](#troubleshooting)
 
 ---
-
+0x277701d949a0eb71e5fd70fa14b13d3079341c80c7540ba6d9ca4ce946fd4b7a
 ## Overview
 
 ChargeHive is a P2P charging and parking platform with:
@@ -400,7 +400,7 @@ curl -X POST http://localhost:3000/endsession \
 CHAdapter.endSessionAndDistributeRewards(
   sessionId: "adapter-rpi-001-0x28cedbe601e68bfb-1735225210-0",
   energyUsed: 25.5
-)
+) 
 ```
 
 **Smart Contract Calculates:**
