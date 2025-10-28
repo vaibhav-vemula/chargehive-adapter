@@ -119,13 +119,13 @@ def end_flow_session():
 
     print("\n🔌 CHARGING DISCONNECTED - Ending Flow session...")
 
-    # Calculate energy consumed in kWh
+    # Calculate energy consumed in Wh
     if start_energy > 0 and current_energy >= start_energy:
         energy_wh = current_energy - start_energy
     else:
         energy_wh = current_energy
 
-    energy_kwh = energy_wh / 1000.0  # Convert Wh to kWh
+    energy_kwh = energy_wh / 1000.0  # For display only
 
     print(f"  Energy consumed: {energy_wh} Wh ({energy_kwh:.3f} kWh)")
     print(f"  Total readings: {len(energy_readings)}")
@@ -133,11 +133,11 @@ def end_flow_session():
     # Save session data locally
     save_session_data(energy_kwh, energy_wh)
 
-    # End session on Flow blockchain
-    if energy_kwh > 0:
+    # End session on Flow blockchain - Send Wh value
+    if energy_wh > 0:
         result = api_request('POST', '/api/session/end', data={
             'sessionId': flow_session_id,
-            'energyUsed': energy_kwh
+            'energyUsed': energy_wh  # Send Wh value directly
         })
 
         if result and result.get('success'):

@@ -93,11 +93,11 @@ npm run mint-tokens 10000.0 0x919d69a9d0efa39b
 npm run fund-treasury 5000.0
 
 # 1. Register adapter
-npm run register-adapter RPI-001 0x919d69a9d0efa39b "Location" "Details" 0.25
+npm run register-adapter RPI-SF-001 0x919d69a9d0efa39b "Location" "Details" 0.25
 
 # 2. Create booking
 FUTURE=$(echo "$(date +%s) + 3600" | bc)
-npm run create-booking RPI-001 0x919d69a9d0efa39b ${FUTURE}.0
+npm run create-booking RPI-SF-001 0x919d69a9d0efa39b ${FUTURE}.0
 # Returns: Booking ID: 0
 
 # 3. Start session

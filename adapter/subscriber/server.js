@@ -106,9 +106,14 @@ app.post('/api/session/end', async (req, res) => {
       });
     }
 
-    console.log(`🏁 Ending session: ${sessionId} with ${energyUsed} kWh`);
+    // Convert Wh to kWh for blockchain (Flow expects kWh)
+    const energyWh = parseFloat(energyUsed);
+    const energyKwh = energyWh / 1000.0;
 
-    const result = await flowService.endSession(sessionId, parseFloat(energyUsed));
+    console.log(`🏁 Ending session: ${sessionId}`);
+    console.log(`   Energy: ${energyWh} Wh (${energyKwh.toFixed(3)} kWh)`);
+
+    const result = await flowService.endSession(sessionId, energyKwh);
 
     res.json({
       success: true,
