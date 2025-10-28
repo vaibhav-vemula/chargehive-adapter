@@ -1,0 +1,32 @@
+{
+  "name": "chargehive-flow-scripts",
+  "version": "1.0.0",
+  "description": "JavaScript scripts to interact with ChargeHive Flow contracts",
+  "type": "module",
+  "scripts": {
+    "setup-minter": "node scripts/setupMinter.js",
+    "setup-account": "node scripts/setupCHTAccount.js",
+    "reset-vault": "node scripts/resetCHTVault.js",
+    "mint-tokens": "node scripts/mintTokens.js",
+    "fund-treasury": "node scripts/fundTreasury.js",
+    "register-adapter": "node scripts/registerAdapter.js",
+    "create-booking": "node scripts/createBooking.js",
+    "start-session": "node scripts/startSession.js",
+    "end-session": "node scripts/endSession.js",
+    "get-balance": "node scripts/getCHTBalance.js",
+    "get-adapter": "node scripts/getAdapter.js",
+    "get-booking": "node scripts/getBooking.js",
+    "get-session": "node scripts/getSession.js",
+    "get-pending-booking": "node scripts/getPendingBooking.js"
+  },
+  "dependencies": {
+    "@onflow/fcl": "^1.12.2",
+    "@onflow/types": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "elliptic": "^6.5.4",
+    "sha3": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  }
+}

@@ -1,55 +1,65 @@
 {
 	"contracts": {
-		"Burner": {
-			"source": "mainnet://f233dcee88fe0abe.Burner",
-			"aliases": {
-				"testnet": "9a0766d93b6608b7"
-			}
-		},
 		"CHAdapter": "./contracts/CHAdapter.cdc",
-		"CHParking": "./contracts/CHParking.cdc",
 		"CHToken": "./contracts/CHToken.cdc",
 		"FungibleToken": {
-			"source": "mainnet://f233dcee88fe0abe.FungibleToken",
+			"source": "",
 			"aliases": {
+				"emulator": "ee82856bf20e2aa6",
+				"mainnet": "f233dcee88fe0abe",
 				"testnet": "9a0766d93b6608b7"
 			}
 		},
 		"FungibleTokenMetadataViews": {
-			"source": "mainnet://f233dcee88fe0abe.FungibleTokenMetadataViews",
+			"source": "",
 			"aliases": {
+				"emulator": "ee82856bf20e2aa6",
+				"mainnet": "f233dcee88fe0abe",
 				"testnet": "9a0766d93b6608b7"
 			}
 		},
 		"MetadataViews": {
-			"source": "mainnet://1d7e57aa55817448.MetadataViews",
+			"source": "",
 			"aliases": {
+				"emulator": "179b6b1cb6755e31",
+				"mainnet": "1d7e57aa55817448",
 				"testnet": "631e88ae7f1d7c20"
 			}
 		},
 		"ViewResolver": {
-			"source": "mainnet://1d7e57aa55817448.ViewResolver",
+			"source": "",
 			"aliases": {
+				"emulator": "f8d6e0586b0a20c7",
+				"mainnet": "1d7e57aa55817448",
 				"testnet": "631e88ae7f1d7c20"
+			}
+		},
+		"Burner": {
+			"source": "",
+			"aliases": {
+				"emulator": "f8d6e0586b0a20c7",
+				"mainnet": "f233dcee88fe0abe",
+				"testnet": "9a0766d93b6608b7"
 			}
 		}
 	},
 	"networks": {
+		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
 		"testnet": "access.devnet.nodes.onflow.org:9000"
 	},
 	"accounts": {
 		"chargehive": {
-			"address": "8e29b2a5f64a137f",
+			"address": "919d69a9d0efa39b",
 			"key": {
 				"type": "file",
 				"location": "chargehive.pkey"
 			}
 		}
 	},
-	"deployments": {
+  "deployments": {
     "testnet": {
-        "chargehive": ["CHToken", "CHAdapter", "CHParking"]
+      "chargehive": ["CHToken", "CHAdapter"]
     }
   }
 }

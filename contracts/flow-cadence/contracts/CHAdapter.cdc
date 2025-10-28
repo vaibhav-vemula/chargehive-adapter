@@ -5,6 +5,9 @@
  * Platform-managed contract where tokens are distributed automatically:
  * - Provider earns 100% of calculated reward
  * - User earns 20% of provider's reward as bonus
+ *
+ * BOOKING REQUIREMENT: All charging sessions must be initiated through a booking.
+ * Users must create a booking before arriving at the charging station.
  */
 
 import "FungibleToken"
@@ -281,7 +284,8 @@ access(all) contract CHAdapter {
         )
     }
 
-    /// Start a charging session using a booking (called by Raspberry Pi when user plugs in)
+    /// Start a charging session (called by Raspberry Pi when user plugs in)
+    /// REQUIRES a valid booking - users must create a booking before charging
     access(all) fun startSessionWithBooking(
         bookingId: UInt64
     ): String {
@@ -329,48 +333,6 @@ access(all) contract CHAdapter {
         return sessionId
     }
 
-    /// Start a charging session directly (called by Raspberry Pi via Backend when user plugs in)
-    /// Use this when user doesn't have a booking (fallback method)
-    access(all) fun startSession(
-        adapterId: String,
-        userAddress: Address
-    ): String {
-        pre {
-            self.adapters[adapterId] != nil: "Adapter not found"
-            self.adapters[adapterId]!.authorized: "Adapter not authorized"
-            userAddress != nil: "Invalid user address"
-        }
-
-        let adapter = self.adapters[adapterId]!
-        let sessionId = self.generateSessionId(adapterId: adapterId, userAddress: userAddress)
-
-        let session = SessionInfo(
-            sessionId: sessionId,
-            adapterId: adapterId,
-            ownerAddress: adapter.ownerAddress,
-            userAddress: userAddress
-        )
-
-        self.sessions[sessionId] = session
-
-        // Track user's sessions
-        if self.userSessions[userAddress] == nil {
-            self.userSessions[userAddress] = []
-        }
-        self.userSessions[userAddress]!.append(sessionId)
-
-        self.totalSessionCount = self.totalSessionCount + 1
-
-        emit SessionStarted(
-            adapterId: adapterId,
-            sessionId: sessionId,
-            userAddress: userAddress,
-            ownerAddress: adapter.ownerAddress,
-            timestamp: getCurrentBlock().timestamp
-        )
-
-        return sessionId
-    }
 
     /// End session and automatically distribute rewards to both provider and user
     /// (called by Raspberry Pi via Backend when user unplugs)

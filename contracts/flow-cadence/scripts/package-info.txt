@@ -1,0 +1,23 @@
+ChargeHive Flow Scripts - File Overview
+========================================
+
+Configuration Files:
+- package.json       : NPM dependencies and script commands
+- flow.json          : Flow blockchain configuration
+- .env.example       : Environment variables template
+- config.js          : FCL configuration helper
+
+Transaction Scripts (Modify blockchain state):
+- registerAdapter.js : Register a new charging adapter
+- createBooking.js   : Create a booking for a charging slot
+- startSession.js    : Start a charging session from booking
+- endSession.js      : End session and distribute rewards
+
+Query Scripts (Read blockchain state):
+- getCHTBalance.js   : Get CHT token balance for an address
+- getAdapter.js      : Get adapter information
+- getBooking.js      : Get booking information
+
+Documentation:
+- README.md          : Complete documentation
+- QUICK_START.md     : Quick reference commands

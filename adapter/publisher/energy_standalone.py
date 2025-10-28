@@ -30,20 +30,6 @@ def start_session():
 
     print(f"Session started with ID: {session_id}")
 
-    # Create session start file
-    session_start_data = {
-        "sessionId": session_id,
-        "startTime": datetime.now().isoformat(),
-        "startTimestamp": int(time.time()),
-        "status": "active"
-    }
-
-    filename = f"session_{session_id}_start.json"
-    with open(filename, 'w') as f:
-        json.dump(session_start_data, f, indent=2)
-
-    print(f"Session start data saved to {filename}")
-
 def end_session():
     """End the current session and save all data to file"""
     global session_active, session_id, energy_values, current_energy, start_energy
@@ -56,29 +42,7 @@ def end_session():
         energy_consumed = current_energy - start_energy
     else:
         energy_consumed = current_energy
-
-    # Generate filename with session ID
-    filename = f"session_{session_id}_complete.json"
-
-    # Prepare comprehensive session data
-    data = {
-        "sessionId": session_id,
-        "startTime": energy_values[0]["timestamp"] if energy_values else int(time.time()),
-        "endTime": int(time.time()),
-        "endTimeISO": datetime.now().isoformat(),
-        "startEnergy": start_energy,
-        "endEnergy": current_energy,
-        "totalEnergyConsumed": energy_consumed,
-        "totalKWh": current_energy,
-        "readingsCount": len(energy_values),
-        "energyValues": energy_values,
-        "status": "completed"
-    }
-
-    # Save to file
-    with open(filename, 'w') as f:
-        json.dump(data, f, indent=2)
-
+    
     print(f"Session data saved to {filename}")
     print(f"Total energy consumed: {energy_consumed} Wh")
     print(f"Total readings: {len(energy_values)}")
