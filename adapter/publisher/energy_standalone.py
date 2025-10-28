@@ -43,7 +43,6 @@ def end_session():
     else:
         energy_consumed = current_energy
     
-    print(f"Session data saved to {filename}")
     print(f"Total energy consumed: {energy_consumed} Wh")
     print(f"Total readings: {len(energy_values)}")
 
